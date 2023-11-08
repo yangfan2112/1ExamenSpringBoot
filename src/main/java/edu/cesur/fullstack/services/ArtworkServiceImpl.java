@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
+import edu.cesur.fullstack.exceptions.ArtworkCreationException;
+import edu.cesur.fullstack.models.ArtistDTO;
 import edu.cesur.fullstack.models.ArtworkDTO;
 
 
@@ -37,10 +39,15 @@ public class ArtworkServiceImpl implements ArtworkService{
 		return obras;
 	}
 
+	ArtistService artistService;
 	@Override
 	public void createArtwork(ArtworkDTO artworkDTO) {
-		obras.add(artworkDTO);
-		
+		ArtistDTO artist = artistService.getArtistById(artworkDTO.getId());
+		if(artist == null) {
+			throw new ArtworkCreationException("El artista no existe en la lista de elite.");
+		}else {
+			obras.add(artworkDTO);
+		}
 	}
 
 	
