@@ -2,6 +2,7 @@ package edu.cesur.fullstack.services;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstack.exceptions.ArtworkCreationException;
@@ -39,6 +40,7 @@ public class ArtworkServiceImpl implements ArtworkService{
 		return obras;
 	}
 
+	@Autowired
 	ArtistService artistService;
 	@Override
 	public void createArtwork(ArtworkDTO artworkDTO) {
