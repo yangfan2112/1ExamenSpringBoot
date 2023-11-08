@@ -44,7 +44,7 @@ public class ArtworkServiceImpl implements ArtworkService{
 	ArtistService artistService;
 	@Override
 	public void createArtwork(ArtworkDTO artworkDTO) {
-		ArtistDTO artist = artistService.getArtistById(artworkDTO.getId());
+		ArtistDTO artist = artistService.getArtistById(artworkDTO.getArtistld());
 		if(artist == null) {
 			throw new ArtworkCreationException("El artista no existe en la lista de elite.");
 		}else {
